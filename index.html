@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* CSS code to style the messenger */
+#messenger {
+  width: 400px;
+  height: 600px;
+  border: 1px solid #ccc;
+}
+
+#conversation {
+  width: 100%;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+#message-form {
+  display: flex;
+  width: 100%;
+  height: 100px;
+}
+
+#message-input {
+  flex-grow: 1;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  width: 100px;
+  height: 100%;
+  background-color: #4caf50;
+  color: #fff;
+  border: 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+</style>
+<body>
+    <!-- HTML code for the messenger layout -->
+<div id="messenger">
+    <div id="conversation">
+      <!-- conversation history goes here -->
+    </div>
+    <form id="message-form">
+      <input type="text" id="message-input" placeholder="Type your message here..." />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+<script>
+    // JavaScript code to handle the messaging functionality
+const form = document.getElementById('message-form');
+const input = document.getElementById('message-input');
+const conversation = document.getElementById('conversation');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  // get the message from the input field
+  const message = input.value;
+  // clear the input field
+  input.value = '';
+  // add the message to the conversation history
+  conversation.innerHTML += `<div class="message">${message}</div>`;
+  // scroll to the bottom of the conversation history
+  conversation.scrollTop = conversation.scrollHeight;
+});
+
+</script>  
+    
+</body>
+</html>
